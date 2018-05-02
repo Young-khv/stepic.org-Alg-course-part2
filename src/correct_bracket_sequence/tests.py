@@ -2,7 +2,7 @@ from unittest import TestCase
 import solution
 
 
-class TestResolver(TestCase):
+class CorrectBracketSequenceTests(TestCase):
     def test_should_return_success_for_correct_empty_sequence(self):
         seq = '(){[]}'
         result = solution.check_sequence(seq)
