@@ -1,27 +1,33 @@
+heights = {-1: 1}
+
+
 def get_tree_height(n, line):
     if n == 1:
         return 1
 
     strings = line.split()
     items = list(map(lambda x: int(x), strings))
-    root = items.index(-1)
-    return get_subtree_height(items, 1, root)
+    result = 1
+    for l in items:
+        leaf_height = get_height_for_leaf(items, l)
+        if leaf_height > result:
+            result = leaf_height
+
+    return result
 
 
-def get_subtree_height(items, curr_height, leaf):
-    subtree = [i for i, x in enumerate(items) if x == leaf]
-    if len(subtree) == 0:
-        return curr_height
-    heights = []
-    for l in subtree:
-        heights.append(get_subtree_height(items, curr_height + 1, l))
-    return max(heights)
+def get_height_for_leaf(items, leaf):
+    if leaf in heights:
+        return heights[leaf]
+    height = get_height_for_leaf(items, items[leaf]) + 1
+    heights[leaf] = height
+    return height
 
 
 '''
 Those lines are needed to pass solution to stepic.org test engine
 Commented for running local unit tests
 '''
-# input()
+# n = input()
 # line = input()
-# print(get_tree_height(line))
+# print(get_tree_height(n, line))
