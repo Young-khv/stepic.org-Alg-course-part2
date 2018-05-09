@@ -2,7 +2,7 @@ import unittest
 from solution import StackWithMax
 
 
-class TreeHeightTests(unittest.TestCase):
+class StackWithMaxTests(unittest.TestCase):
     def test_should_return_2_after_both_max_calls(self):
         stack = StackWithMax()
         stack.push(2)
