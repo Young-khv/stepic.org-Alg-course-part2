@@ -32,7 +32,7 @@ class CustomDict:
         h = self.get_hash(s)
         if self.table[h] is None:
             self.table[h] = collections.deque([s])
-        else:
+        elif s not in self.table[h]:
             self.table[h].appendleft(s)
 
     def del_val(self, s):
